@@ -14,9 +14,13 @@ if __name__ == "__main__":
     thyroid_path = matrix_dir + '/Thyroid_Analysis.v6p.normalized.expression.bed.gz'
     phenotype_path = phenotype_dir + '/GTEx_Data_V6_Annotations_SubjectPhenotypesDS.txt'
 
+    print(muscle_skeletal_path)
     muscle_skeletal_data = pd.read_csv(muscle_skeletal_path, sep='\t')
+    print(whole_blood_path)
     whole_blood_data = pd.read_csv(whole_blood_path, sep='\t')
+    print(adipose_subcutaneous_path)
     adipose_subcutaneous_data = pd.read_csv(adipose_subcutaneous_path, sep='\t')
+    print(thyroid_path)
     thyroid_data = pd.read_csv(thyroid_path, sep='\t')
 
     phenotype = pd.read_csv(phenotype_path, sep='\t')
