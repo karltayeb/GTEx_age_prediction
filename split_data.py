@@ -15,13 +15,13 @@ if __name__ == "__main__":
     phenotype_path = phenotype_dir + '/GTEx_Data_V6_Annotations_SubjectPhenotypesDS.txt'
 
     print(muscle_skeletal_path)
-    muscle_skeletal_data = pd.read_csv(muscle_skeletal_path, sep='\t')
+    muscle_skeletal_data = pd.read_csv(muscle_skeletal_path, sep='\t', compression='gzip')
     print(whole_blood_path)
-    whole_blood_data = pd.read_csv(whole_blood_path, sep='\t')
+    whole_blood_data = pd.read_csv(whole_blood_path, sep='\t', compression='gzip')
     print(adipose_subcutaneous_path)
-    adipose_subcutaneous_data = pd.read_csv(adipose_subcutaneous_path, sep='\t')
+    adipose_subcutaneous_data = pd.read_csv(adipose_subcutaneous_path, sep='\t', compression='gzip')
     print(thyroid_path)
-    thyroid_data = pd.read_csv(thyroid_path, sep='\t')
+    thyroid_data = pd.read_csv(thyroid_path, sep='\t', compression='gzip')
 
     phenotype = pd.read_csv(phenotype_path, sep='\t')
     phenotype.AGE = phenotype.AGE.apply(lambda age: int(age[:2]))
