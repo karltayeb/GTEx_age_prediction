@@ -8,8 +8,8 @@ from sklearn.preprocessing import StandardScaler
 
 from collections import defaultdict
 
-training_data = pickle.load(open('./data/GTEx_train'))
-test_data = pickle.load(open('./data/GTEx_test'))
+training_data = pickle.load(open('./data/GTEx_train', 'rb'))
+test_data = pickle.load(open('./data/GTEx_test', 'rb'))
 tissues = training_data.keys()
 
 scores = defaultdict(list)
@@ -31,7 +31,7 @@ for tissue in tissues:
     total_samples = gene_expression.shape[0]
 
     for subset in np.arange(25, total_samples, 25):
-        for runs in range(20):
+        for runs in range(50):
             # select a random percent of of training set
             selected_samples = np.random.choice(
                 total_samples, subset, replace=False)
@@ -119,4 +119,4 @@ everything = pd.melt(
     value_vars=[0, 1, 2]
     )
 
-pickle.dump(everything, 'test_results')
+pickle.dump(everything, open('test_results', 'wb'))
