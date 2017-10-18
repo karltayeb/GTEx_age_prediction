@@ -12,7 +12,7 @@ import sys
 
 if __name__ == "__main__":
 
-    tissue_index = sys.argv[1]
+    tissue_index = int(sys.argv[1])
 
     training_data = pickle.load(open('GTEx_train'))
     test_data = pickle.load(open('GTEx_test'))
@@ -28,6 +28,7 @@ if __name__ == "__main__":
     KRANGE = int(sys.argv[2])
     KFOLDS = int(sys.argv[3])
 
+    print("Tuning penalty for", tissue)
     for k in range(KRANGE):
         for alpha in np.array([10 * (0.5**x) for x in range(2)]):
             lassos[(k, alpha)] = []
