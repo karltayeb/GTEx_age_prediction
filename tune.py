@@ -26,11 +26,12 @@ if __name__ == "__main__":
     lassos = {}
 
     KRANGE = int(sys.argv[2])
-    KFOLDS = int(sys.argv[3])
+    PRANGE = int(sys.argv[3])
+    KFOLDS = int(sys.argv[4])
 
     print("Tuning penalty for", tissue)
     for k in range(KRANGE):
-        for alpha in np.array([10 * (0.5**x) for x in range(2)]):
+        for alpha in np.array([10 * (0.5**x) for x in range(PRANGE)]):
             lassos[(k, alpha)] = []
             for train, val in KFold(total_samples, KFOLDS):
                 X = gene_expression_train.iloc[train].as_matrix()
