@@ -8,8 +8,8 @@ from sklearn.preprocessing import StandardScaler
 
 from collections import defaultdict
 
-training_data = pickle.load(open('./data/GTEx_train', 'rb'))
-test_data = pickle.load(open('./data/GTEx_test', 'rb'))
+training_data = pickle.load(open('GTEx_train', 'rb'))
+test_data = pickle.load(open('GTEx_test', 'rb'))
 tissues = training_data.keys()
 
 scores = defaultdict(list)
@@ -23,7 +23,7 @@ for tissue in tissues:
     tuning = pd.read_pickle(file_path)
 
     Z = pd.read_pickle(file_path).T.reset_index().rename(
-        columns={'level_0':'regressed_pcs', 'level_1': 'penalty'})
+        columns={'level_0': 'regressed_pcs', 'level_1': 'penalty'})
     k, alpha = Z.set_index(['regressed_pcs', 'penalty']).mean(axis=1).argmax()
 
     gene_expression, phenotype = training_data[tissue]

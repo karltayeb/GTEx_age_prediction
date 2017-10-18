@@ -12,12 +12,10 @@ import sys
 
 if __name__ == "__main__":
 
-    training_path = sys.argv[1]
-    testing_path = sys.argv[2]
-    tissue_index = sys.argv[3]
+    tissue_index = sys.argv[1]
 
-    training_data = pickle.load(open('./data/GTEx_train'))
-    test_data = pickle.load(open('./data/GTEx_test'))
+    training_data = pickle.load(open('GTEx_train'))
+    test_data = pickle.load(open('GTEx_test'))
     tissues = training_data.keys()
 
     tissue = tissues[tissue_index]

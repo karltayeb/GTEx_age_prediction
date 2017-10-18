@@ -60,14 +60,14 @@ if __name__ == "__main__":
     train = {
         'muscle_skeletal': (muscle_skeletal_train, muscle_skeletal_phenotype_train),
         'whole_blood': (whole_blood_train, whole_blood_phenotype_train),
-        'adibpose_subcutaneous': (adipose_subcutaneous_train, adipose_subcutaneous_phenotype_train),
+        'adipose_subcutaneous': (adipose_subcutaneous_train, adipose_subcutaneous_phenotype_train),
         'thyroid': (thyroid_train, thyroid_phenotype_train)
     }
 
     test = {
         'muscle_skeletal': (muscle_skeletal_test, muscle_skeletal_phenotype_test),
         'whole_blood': (whole_blood_test, whole_blood_phenotype_test),
-        'adibpose_subcutaneous': (adipose_subcutaneous_test, adipose_subcutaneous_phenotype_test),
+        'adipose_subcutaneous': (adipose_subcutaneous_test, adipose_subcutaneous_phenotype_test),
         'thyroid': (thyroid_test, thyroid_phenotype_test)
     }
 
