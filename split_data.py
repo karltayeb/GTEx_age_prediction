@@ -6,7 +6,6 @@ import sys
 if __name__ == "__main__":
     matrix_dir = sys.argv[1]
     phenotype_dir = sys.argv[2]
-    out_dir = sys.argv[3]
 
     muscle_skeletal_path = matrix_dir + '/Muscle_Skeletal_Analysis.v6p.normalized.expression.bed.gz'
     whole_blood_path = matrix_dir + '/Whole_Blood_Analysis.v6p.normalized.expression.bed.gz'
@@ -71,5 +70,5 @@ if __name__ == "__main__":
         'thyroid': (thyroid_test, thyroid_phenotype_test)
     }
 
-    pickle.dump(train, open(out_dir + '/GTEx_train', 'wb'))
-    pickle.dump(test, open(out_dir + '/GTEx_test', 'wb'))
+    pickle.dump(train, open('GTEx_train', 'wb'))
+    pickle.dump(test, open('GTEx_test', 'wb'))

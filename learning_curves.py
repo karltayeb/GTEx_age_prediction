@@ -7,6 +7,7 @@ from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.preprocessing import StandardScaler
 
 from collections import defaultdict
+import sys
 
 training_data = pickle.load(open('GTEx_train', 'rb'))
 test_data = pickle.load(open('GTEx_test', 'rb'))
@@ -16,6 +17,8 @@ scores = defaultdict(list)
 permuted_scores = defaultdict(list)
 min_scores = defaultdict(list)
 min_permuted_scores = defaultdict(list)
+
+RUNS = int(sys.argv[1])
 
 for tissue in tissues:
     file_path = tissue + '_tuning'
@@ -34,7 +37,7 @@ for tissue in tissues:
     total_samples = gene_expression.shape[0]
 
     for subset in np.arange(25, total_samples, 25):
-        for runs in range(10):
+        for runs in range(RUNS):
             # select a random percent of of training set
             selected_samples = np.random.choice(
                 total_samples, subset, replace=False)

@@ -25,10 +25,13 @@ if __name__ == "__main__":
     total_samples = gene_expression_train.shape[0]
     lassos = {}
 
-    for k in range(2):
+    KRANGE = int(sys.argv[2])
+    KFOLDS = int(sys.argv[3])
+
+    for k in range(KRANGE):
         for alpha in np.array([10 * (0.5**x) for x in range(2)]):
             lassos[(k, alpha)] = []
-            for train, val in KFold(total_samples, 2):
+            for train, val in KFold(total_samples, KFOLDS):
                 X = gene_expression_train.iloc[train].as_matrix()
                 X_val = gene_expression_train.iloc[val].as_matrix()
 
