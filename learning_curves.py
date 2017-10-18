@@ -21,7 +21,10 @@ for tissue in tissues:
     file_path = tissue + '_tuning'
     print(file_path)
     tuning = pd.read_pickle(file_path)
-    k, alpha = tuning.max().argmax()
+
+    Z = pd.read_pickle(file_path).T.reset_index().rename(
+        columns={'level_0':'regressed_pcs', 'level_1': 'penalty'})
+    k, alpha = Z.set_index(['regressed_pcs', 'penalty']).mean(axis=1).argmax()
 
     gene_expression, phenotype = training_data[tissue]
     gene_expression_test, phenotype_test = test_data[tissue]
@@ -31,7 +34,7 @@ for tissue in tissues:
     total_samples = gene_expression.shape[0]
 
     for subset in np.arange(25, total_samples, 25):
-        for runs in range(50):
+        for runs in range(10):
             # select a random percent of of training set
             selected_samples = np.random.choice(
                 total_samples, subset, replace=False)
